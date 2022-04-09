@@ -1,7 +1,7 @@
 package com.myfitness.easyfitness.domain
 
-class SetCharacteristicUseCase {
-    fun setCharacteristicCase(){
-        TODO()
+class SetCharacteristicUseCase(private val bodyCharacteristicRepository: BodyCharacteristicRepository) {
+    fun setCharacteristicCase(body: Body){
+        bodyCharacteristicRepository.setCharacteristicCase(body)
     }
 }

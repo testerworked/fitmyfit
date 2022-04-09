@@ -3,7 +3,7 @@ package com.myfitness.easyfitness.domain
 interface BodyCharacteristicRepository {
     fun getCharacteristicUseCase()
 
-    fun setCharacteristicCase()
+    fun setCharacteristicCase(body: Body)
 
-    fun updateCharacteristicUseCase()
+    fun updateCharacteristicUseCase(body: Body)
 }
