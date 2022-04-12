@@ -1,6 +1,6 @@
 package com.myfitness.easyfitness.domain
 
-data class Exercise(
+data class ExerciseItem(
     val id: Int,
     val name: String,
     val count: Int,
