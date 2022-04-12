@@ -1,8 +1,8 @@
 package com.myfitness.easyfitness.domain
 
-class AddExerciseItemUseCase {
+class AddExerciseItemUseCase(private val exerciseListRepository: ExerciseListRepository) {
 
     fun addExerciseItem(exerciseItem: ExerciseItem){
-        TODO()
+        exerciseListRepository.addExerciseItem(exerciseItem)
     }
 }

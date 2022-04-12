@@ -1,7 +1,7 @@
 package com.myfitness.easyfitness.domain
 
-class DeleteExerciseItemUseCase {
+class DeleteExerciseItemUseCase(private val exerciseListRepository: ExerciseListRepository) {
     fun deleteExerciseItemUseCase(exerciseItem: ExerciseItem){
-
+        exerciseListRepository.deleteExerciseItem(exerciseItem)
     }
 }
