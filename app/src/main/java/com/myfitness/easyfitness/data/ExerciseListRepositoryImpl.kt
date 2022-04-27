@@ -1,10 +1,14 @@
 package com.myfitness.easyfitness.data
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.myfitness.easyfitness.domain.ExerciseItem
 import com.myfitness.easyfitness.domain.ExerciseListRepository
 import java.lang.RuntimeException
 
 object ExerciseListRepositoryImpl: ExerciseListRepository {
+
+    private val exerciseListLD = MutableLiveData<List<ExerciseItem>>()
 
     private val exerciseList = mutableListOf<ExerciseItem>()
 
@@ -23,10 +27,12 @@ object ExerciseListRepositoryImpl: ExerciseListRepository {
         }
 
         exerciseList.add(exerciseItem)
+        updateList()
     }
 
     override fun deleteExerciseItem(exerciseItem: ExerciseItem) {
         exerciseList.remove(exerciseItem)
+        updateList()
     }
 
     override fun editExerciseItem(exerciseItem: ExerciseItem) {
@@ -41,7 +47,11 @@ object ExerciseListRepositoryImpl: ExerciseListRepository {
         } ?: throw RuntimeException("Element with id $exerciseItemId not found")
     }
 
-    override fun getExerciseList(): List<ExerciseItem> {
-        return exerciseList.toList()
+    override fun getExerciseList(): LiveData<List<ExerciseItem>> {
+        return exerciseListLD
+    }
+
+    private fun updateList(){
+        exerciseListLD.value = exerciseList.toList()
     }
 }

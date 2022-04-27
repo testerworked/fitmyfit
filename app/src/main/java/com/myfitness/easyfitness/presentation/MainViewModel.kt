@@ -17,22 +17,15 @@ class MainViewModel: ViewModel() {
     private val editExerciseItemUseCase = EditExerciseItemUseCase(repository)
 
 
-    val exerciseList = MutableLiveData<List<ExerciseItem>>()
-
-    fun getExerciseList(){
-        val list = getExerciseListUseCase.getExerciseList()
-        exerciseList.value = list
-    }
+    val exerciseList = getExerciseListUseCase.getExerciseList()
 
     fun deleteExerciseItem(exerciseItem: ExerciseItem){
         deleteExerciseItemUseCase.deleteExerciseItemUseCase(exerciseItem)
-        getExerciseList()
     }
 
     fun changeEnableState(exerciseItem: ExerciseItem){
         val newItem = exerciseItem.copy(enabled = !exerciseItem.enabled)
         editExerciseItemUseCase.editExerciseItem(newItem)
-        getExerciseList()
     }
 
 }

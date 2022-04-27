@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
         viewModel.exerciseList.observe(this){
             Log.d(TAG, it.toString())
         }
-        viewModel.getExerciseList()
 
     }
 

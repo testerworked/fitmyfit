@@ -1,5 +1,7 @@
 package com.myfitness.easyfitness.domain
 
+import androidx.lifecycle.LiveData
+
 interface ExerciseListRepository {
 
     fun addExerciseItem(exerciseItem: ExerciseItem)
@@ -10,5 +12,5 @@ interface ExerciseListRepository {
 
     fun getExerciseItem(exerciseItemId: Int):ExerciseItem
 
-    fun getExerciseList():List<ExerciseItem>
+    fun getExerciseList(): LiveData<List<ExerciseItem>>
 }
