@@ -10,6 +10,13 @@ object ExerciseListRepositoryImpl: ExerciseListRepository {
 
     private var autoIncrementId = 0
 
+    init {
+        for(i in 0 until 10){
+            val item = ExerciseItem("Name $i", i, true)
+            addExerciseItem(item)
+        }
+    }
+
     override fun addExerciseItem(exerciseItem: ExerciseItem) {
         if(exerciseItem.id == ExerciseItem.UNDEFINED_ID){
             exerciseItem.id = autoIncrementId++
